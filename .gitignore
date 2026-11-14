@@ -1,0 +1,4 @@
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+.virtual_documents/
