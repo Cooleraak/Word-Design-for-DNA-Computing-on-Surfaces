@@ -168,6 +168,40 @@ statistics.
 The current implementation generates 17,440 eligible candidate words. The
 notebook contains the detailed implementation and encoding documentation.
 
+## Experimental results
+
+Runs using the generated set of 17,440 candidates produced the following
+measurements. Every listed target size was satisfiable.
+
+| Target size | Result | Elapsed time |
+| ---: | --- | ---: |
+| 1 | SAT | approximately 2 seconds |
+| 10 | SAT | approximately 17 seconds |
+| 20 | SAT | approximately 18 seconds |
+| 30 | SAT | approximately 20 seconds |
+| 64 | SAT | approximately 55 seconds |
+| 85 | SAT | approximately 9 minutes |
+
+The elapsed time does not grow uniformly with the target size. Target sizes
+10, 20, and 30 completed in similar times, but the increase from 64 to 85
+raised the reported time from approximately 55 seconds to approximately nine
+minutes. Runtime for a larger target should therefore be measured rather than
+estimated by linear extrapolation.
+
+The runs for target sizes 64 and 85 satisfy the project requirement for a
+nontrivial satisfiable instance that takes between 10 seconds and 10 minutes.
+The result for 85 establishes a lower bound: a valid set containing at least
+85 words exists. It does not prove that 85 is the maximum because no
+unsatisfiable larger target was recorded.
+
+The complete decoded list for target size 85 is retained in the final code-cell
+output of the notebook. It contains 85 distinct words, and all GC-content,
+pairwise distance, and reverse/complement constraints were checked against the
+saved output. This run contains 1,517,281 variables and 24,219,555 clauses.
+Separate construction and solver timings and detailed Glucose statistics were
+not retained because the elapsed time was measured externally and Glucose was
+run with verbosity disabled.
+
 ## Example instances
 
 ### Satisfiable
